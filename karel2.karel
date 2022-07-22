@@ -1,0 +1,41 @@
+public class KarelQuadRepair extends SuperKarel {
+  public void run() {
+    fillArch()
+  }
+  
+  private void fastForward() {
+    while (frontIsClear()) {
+      move();
+    }
+  }
+  
+  private void fillArch() {
+    while (frontIsClear()) {
+      if (noBeepersPresent()) {
+        putBeeper()
+        move()
+      } else {
+        move()
+      }
+    }
+    if (rightIsClear()) {
+      turnAround()
+      fastForward()
+      turnLeft()
+      nextArch()
+    } else {
+      turnAround()
+      fastForward()
+    }
+  }
+
+  private void turnAround() {
+    turnRight();
+    turnRight();
+  }
+  private void nextArch() {
+    for (int i = 0; i < 4; i++) {
+      move();
+    }
+  }
+}
