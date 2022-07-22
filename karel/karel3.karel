@@ -1,0 +1,57 @@
+public class CheckerBoardKarel extends SuperKarel {
+  public void run() {
+    go();
+  }
+  private void go() {
+    putBeeper();
+    if (frontIsClear()) {
+      move();
+      if (frontIsClear()) {
+        move();
+        putBeeper();
+        moveUp();
+        goAlt();
+      } else {
+        go();
+      }
+    } else {
+      // Go up and do the pattern vertically.
+
+    }
+  }
+
+  private void moveUp() {
+    cardinalTurn();
+    if (frontIsClear()) {
+      move();
+      cardinalTurn();
+      }
+    }
+
+  private void goAlt() {
+    putBeeper();
+    if (frontIsClear()) {
+      move();
+      if (frontIsClear()) {
+        move();
+        putBeeper();
+        moveUp();
+        goAlt();
+      } else {
+        go();
+      }
+    } 
+  }
+
+  private void cardinalTurn() {
+    if (facingEast()) {
+      turnLeft();
+    } if (facingWest()) {
+      turnRight();
+    } if (rightIsClear()) {
+      turnRight();
+    } if (rightIsBlocked()) {
+      turnLeft();
+    }
+  }
+}
